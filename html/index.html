@@ -1,0 +1,84 @@
+<html>
+
+
+<head>
+
+    <script>
+        state = {}
+        var connection = new WebSocket('ws://localhost:8080/echo');
+        connection.onopen = function () {
+            Send("/load")
+        };
+
+        // Log errors
+        connection.onerror = function (error) {
+            console.log('WebSocket Error ' + error);
+        };
+        function Send(msg){
+            connection.send(msg)
+        }
+        // Log messages from the server
+        connection.onmessage = function (e) {
+            console.log(e.data)
+            state = JSON.parse(e.data)
+            document.getElementById("out").innerHTML +="<br /><br />"+ state.Response
+            document.getElementById("inv").innerHTML = e.data
+        };
+
+    </script>
+    <meta charset="UTF-8">
+    <title>
+        Simple test setup for Websocket
+    </title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+
+    <style type="text/css">
+        #wrap {
+            width:100%;
+            margin:0 auto;
+        }
+        #left_col {
+            float:left;
+            width:70%;
+        }
+        #right_col {
+            float:right;
+            width:30%;
+        }
+    </style>
+    <script>
+        extra_digit =  Math.floor((Math.random() * 98) + 1);
+        murderer = 0
+    </script>
+
+</head>
+
+<body bgcolor="black">
+<div id="wrap">
+    <div id = "top" style='width: 100%; color:white;     font-family: "Courier New", Courier, monospace; border: 3px grey;'><center>My life as a teenage home automation system<hr></center></div>
+    <div id="left_col">
+        <div Id="out" style='height: 85%;color:white;     font-family: "Courier New", Courier, monospace; overflow-y: scroll; border: 3px grey;' ></div><hr>
+        <input Id="in" style="width: 100%;  color:grey; background-color:black;">
+    </div>
+    <div id="right_col" style='height: 90%; color:white;     font-family: "Courier New", Courier, monospace;'><b><center>Inventory</center></b><hr/><div Id="inv" style='height: 100%; color:white;     font-family: "Courier New", Courier, monospace;'></div>
+    </div>
+</div>
+
+
+
+</body>
+
+<script>
+
+    document.onkeypress = function(e) {
+
+        if (e.which === 13) {
+            Send(document.getElementById("in").value); // Send the message 'Ping' to the server
+            document.getElementById("in").value=""
+        }
+
+
+
+    }
+</script>
+</html>
