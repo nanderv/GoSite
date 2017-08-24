@@ -1,0 +1,7 @@
+direction
+verb
+noun
+examinable:noun
+object:examinable
+location:noun
+location:direction

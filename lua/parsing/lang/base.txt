@@ -1,0 +1,2 @@
+go:verb #direction>go 2
+examine:verb #examinable>examine 2

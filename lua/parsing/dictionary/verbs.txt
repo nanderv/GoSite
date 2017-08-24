@@ -1,0 +1,8 @@
+use:verb
+get:verb
+obtain:verb:get
+go:verb
+walk:verb:go
+head:verb:walk
+examine:verb
+X::examine

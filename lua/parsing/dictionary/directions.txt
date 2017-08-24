@@ -1,0 +1,8 @@
+north:direction
+east:direction
+south:direction
+west:direction
+N::north
+E::east
+S::south
+W::west
