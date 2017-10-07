@@ -110,7 +110,7 @@ function parse(str)
 
 
             end
-            scripts[sentence.func[1]](unpack(params))
+            return scripts[sentence.func[1]](unpack(params))
         end
     end
 end

@@ -1,8 +1,8 @@
 scripts = {}
 
 scripts.examine = function(what)
-    print(what.word, what.type)
+    return {mode="fill", content=what.word.. what.type, div="content"}
 end
 scripts.go = function(to)
-    print(to.word, to.type)
+    return  {mode="add", content=to.word.. to.type, div="content"}
 end

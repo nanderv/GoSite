@@ -54,7 +54,7 @@ func echo(w http.ResponseWriter, r *http.Request) {
 }
 // receive JSON type T
 func main() {
-	fs := http.FileServer(http.Dir("html"))
+	fs := http.FileServer(http.Dir("frontend/build"))
 	http.HandleFunc("/echo", echo)
 	http.Handle("/", fs)
 	log.Fatal(http.ListenAndServe(addr, nil))
